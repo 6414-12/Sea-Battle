@@ -1,0 +1,54 @@
+REST:
+Регистрация: /api/v1/register (POST)
+{
+    "name":"",
+    "password:"",
+    "avatar":""
+}
+
+Логин: /api/v1/login (POST)
+{
+    "name":"",
+    "password":""
+}
+
+Рейтинг: /api/v1/rating?from=N&count=M (GET)
+{
+    "from":N,
+    "count":M,
+    "statistics": {
+        ...,
+        {
+            "rankingPlace":"",
+            "winrate":"",
+            "accuracy":""
+        }
+        ...
+    }
+}
+
+Статистика: /api/v1/statistic/{id} (GET)
+{
+    "rankingPlace":"",
+    "gamesCount":"",
+    "winsCount":"",
+    "loseCount":"",
+    "winrate":"",
+    "accuracy":"",
+    "hittingRecord":""
+}
+
+Создать комнату: /api/v1/rooms (POST)
+{
+    "name":""
+}
+
+Получить информацию о комнатах: /api/v1/rooms (GET)
+{
+    "id":"",
+    "name":"",
+    "state":""
+}
+
+WebSocket:
+Войти в комнату: /api/v1/game/rooms/{room-id}/connect/{token}
