@@ -1,54 +1,61 @@
 REST:
 Регистрация: /api/v1/register (POST)
-{
-    "name":"",
-    "password":"",
-    "avatar":""
-}
+    Request: body: JSON{
+        "name":"",
+        "password":"",
+        "avatar":""
+    }
+    Response: 201, body: empty
 
 Логин: /api/v1/login (POST)
-{
-    "name":"",
-    "password":""
-}
+    Request: body: JSON{
+        "name":"",
+        "password":""
+    }
+    Response: 200, body: empty
 
 Рейтинг: /api/v1/rating?from=N&count=M (GET)
-{
-    "from":N,
-    "count":M,
-    "statistics": {
-        ...,
-        {
-            "rankingPlace":"",
-            "winrate":"",
-            "accuracy":""
+    Request: body: empty
+    Response: 200, body: JSON{
+        "from":N,
+        "count":M,
+        "statistics": {
+            ...,
+            {
+                "rankingPlace":"",
+                "winrate":"",
+                "accuracy":""
+            }
+            ...
         }
-        ...
     }
-}
 
 Статистика: /api/v1/statistic/{id} (GET)
-{
-    "rankingPlace":"",
-    "gamesCount":"",
-    "winsCount":"",
-    "loseCount":"",
-    "winrate":"",
-    "accuracy":"",
-    "hittingRecord":""
-}
+    Request: body: empty
+    Response: 200, body: JSON{
+        "rankingPlace":"",
+        "gamesCount":"",
+        "winsCount":"",
+        "loseCount":"",
+        "winrate":"",
+        "accuracy":"",
+        "hittingRecord":""
+    }
+
 
 Создать комнату: /api/v1/rooms (POST)
-{
-    "name":""
-}
+    Request: body: JSON{
+        "name":""
+    }
+    Response: 201, body: empty
 
 Получить информацию о комнатах: /api/v1/rooms (GET)
-{
-    "id":"",
-    "name":"",
-    "state":""
-}
+    Request: body: empty
+    Response: 200, body: JSON{
+        "id":"",
+        "name":"",
+        "state":""
+    }
 
 WebSocket:
 Войти в комнату: /api/v1/game/rooms/{room-id}/connect/{token}
