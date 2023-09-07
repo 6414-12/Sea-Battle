@@ -1,61 +1,80 @@
 REST:
-Регистрация: /api/v1/register (POST)
+(Anonymous) Регистрация: /api/v1/register (POST)
     Request: body: JSON{
         <String>"name":"",
         <String>"password":"",
         <String>"avatar":""
     }
     Response: 201, body: empty
+    Possible errors: 400
 
-Логин: /api/v1/login (POST)
+(Anonymous) Логин: /api/v1/login (POST)
     Request: body: JSON{
         <String>"name":"",
         <String>"password":""
     }
-    Response: 200, body: empty
+    Response: 200, body: {
+        <String>"accessToken":""
+    }
+    Possible errors: 400
 
-Рейтинг: /api/v1/rating?from=N&count=M (GET)
+(Anonymous) Рейтинг: /api/v1/rating?from=N&count=M (GET)
     Request: body: empty
     Response: 200, body: JSON{
         <Long>"from":N,
         <Long>"count":M,
-        "statistics": {
+        "statistics": [
             ...,
             {
                 <Long>"rankingPlace":"",
-                <Double>"winrate":"",
+                <Double>"winRate":"",
                 <Double>"accuracy":""
-            }
+            },
             ...
-        }
+        ]
     }
+    Possible errors: 400
 
-Статистика: /api/v1/statistic/{id} (GET)
+(Anonymous) Статистика: /api/v1/statistic/{id} (GET)
     Request: body: empty
     Response: 200, body: JSON{
         <Long>"rankingPlace":"",
         <Long>"gamesCount":"",
         <Long>"winsCount":"",
         <Long>"loseCount":"",
-        <Double>"winrate":"",
+        <Double>"winRate":"",
         <Double>"accuracy":"",
         <Integer>"hittingRecord":""
     }
+    Possible errors: 400
 
 
-Создать комнату: /api/v1/rooms (POST)
-    Request: body: JSON{
+(User) Создать комнату: /api/v1/rooms (POST)
+    Request: header: accessToken, body: JSON{
         <String>"name":""
     }
     Response: 201, body: empty
+    Possible errors: 400, 403
 
-Получить информацию о комнатах: /api/v1/rooms (GET)
-    Request: body: empty
+(User) Получить информацию о комнатах: /api/v1/rooms (GET)
+    Request: header: accessToken, body: empty
     Response: 200, body: JSON{
         <Long>"id":"",
         <String>"name":"",
         <String>"state":""
     }
+    Possible errors: 403
 
-WebSocket:
-Войти в комнату: /api/v1/game/rooms/{room-id}/connect/{token}
+(User) WebSocket:
+Войти в комнату: /api/v1/game/rooms/{room-id}/connect/{accessToken}
+Possible errors: wrong_incoming_data - Неправильные входящие данные
+
+Паттерн ответа ошибки:
+JSON{
+  "error": "ErrorType",
+  "message": "Error message",
+  "details": {
+    "field": "SomeField",
+    "message": "Detail message"
+  }
+}
