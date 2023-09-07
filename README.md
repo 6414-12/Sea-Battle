@@ -55,5 +55,5 @@ git clone https://github.com/6414-12/Sea-Battle
 ## Разработчики
 
 - Кажуков П.В. - sanpavkaz@gmail.com
-- Поняев Д.А. - 
+- Поняев Д.А. - my.login26@gmail.com
 - Кветкин В.А. - kvetkin-vas@mail.ru
