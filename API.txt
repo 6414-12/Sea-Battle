@@ -44,15 +44,15 @@ REST:
     Request: header: accessToken, body: JSON{
         <String>"name":""
     }
-    Response: 201, body: empty
+    Response: 201, body: JSON{
+        <Long>"roomId":""
+    }
     Possible errors: 400, 403
 
-(User) Получить информацию о комнатах: /api/v1/rooms (GET)
+(User) Поиск комнаты: /api/v1/rooms/find/{username} (GET)
     Request: header: accessToken, body: empty
     Response: 200, body: JSON{
-        <Long>"id":"",
-        <String>"name":"",
-        <String>"state":""
+        <Long>"id":""
     }
     Possible errors: 403
 
