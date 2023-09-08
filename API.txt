@@ -20,6 +20,13 @@ REST:
     }
     Possible errors: 400
 
+(Anonymous) Выход: /api/v1/logout (POST)
+    Request: body: JSON{
+        <String>"accessToken":""
+    }
+    Response: 200, body empty
+    Possible errors: 400, 403
+
 (Anonymous) Рейтинг: /api/v1/rating (GET)
     Request: body: empty
     Response: 200, body: JSON[
