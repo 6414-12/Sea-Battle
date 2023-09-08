@@ -5,7 +5,9 @@ REST:
         <String>"password":"",
         <String>"avatar":""
     }
-    Response: 201, body: empty
+    Response: 201, body: {
+        <String>"accessToken":""
+    }
     Possible errors: 400
 
 (Anonymous) Логин: /api/v1/login (POST)
@@ -18,36 +20,18 @@ REST:
     }
     Possible errors: 400
 
-(Anonymous) Рейтинг: /api/v1/rating?from=N&count=M (GET)
+(Anonymous) Рейтинг: /api/v1/rating (GET)
     Request: body: empty
-    Response: 200, body: JSON{
-        <Long>"from":N,
-        <Long>"count":M,
-        "statistics": [
-            ...,
-            {
-                <Long>"rankingPlace":"",
-                <Double>"winRate":"",
-                <Double>"accuracy":""
-            },
-            ...
-        ]
-    }
+    Response: 200, body: JSON[
+        ...,
+        {
+            <Long>"rankingPlace":"",
+            <Double>"winRate":"",
+            <Double>"accuracy":""
+        },
+        ...
+    ]
     Possible errors: 400
-
-(Anonymous) Статистика: /api/v1/statistic/{id} (GET)
-    Request: body: empty
-    Response: 200, body: JSON{
-        <Long>"rankingPlace":"",
-        <Long>"gamesCount":"",
-        <Long>"winsCount":"",
-        <Long>"loseCount":"",
-        <Double>"winRate":"",
-        <Double>"accuracy":"",
-        <Integer>"hittingRecord":""
-    }
-    Possible errors: 400
-
 
 (User) Создать комнату: /api/v1/rooms (POST)
     Request: header: accessToken, body: JSON{
@@ -71,10 +55,5 @@ Possible errors: wrong_incoming_data - Неправильные входящие
 
 Паттерн ответа ошибки:
 JSON{
-  "error": "ErrorType",
-  "message": "Error message",
-  "details": {
-    "field": "SomeField",
-    "message": "Detail message"
-  }
+  "message": "Error message"
 }
