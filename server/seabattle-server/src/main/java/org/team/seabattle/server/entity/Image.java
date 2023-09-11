@@ -1,4 +1,4 @@
-package org.team.seabattle.server.persist.entity;
+package org.team.seabattle.server.entity;
 
 
 import jakarta.persistence.*;
@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 import org.team.seabattle.server.service.validation.ImageShouldExists;
 
 import java.io.*;
-import java.util.Arrays;
 
 @Entity
 @Data
@@ -28,9 +27,9 @@ public class Image {
     this.path = path;
   }
 
-  @PostLoad
-  private void initFile() {
-    imageFile = new File(path);
+  public Image(File file) {
+    this.imageFile = file;
+    this.path = file.getPath();
   }
 
   /**

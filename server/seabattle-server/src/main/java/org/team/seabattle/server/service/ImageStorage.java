@@ -4,6 +4,7 @@ import jakarta.annotation.PostConstruct;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 import org.team.seabattle.server.service.validation.SupportedImageName;
 
@@ -11,6 +12,7 @@ import java.io.*;
 
 @Validated
 @Component
+@Transactional
 public class ImageStorage {
   private final static String STORAGE_NAME = "images";
 

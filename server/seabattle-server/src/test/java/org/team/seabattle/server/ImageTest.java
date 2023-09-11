@@ -1,12 +1,9 @@
 package org.team.seabattle.server;
 
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.mockito.junit.jupiter.MockitoExtension;
-import org.team.seabattle.server.persist.entity.Image;
+import org.team.seabattle.server.entity.Image;
 
 import java.util.stream.Stream;
 

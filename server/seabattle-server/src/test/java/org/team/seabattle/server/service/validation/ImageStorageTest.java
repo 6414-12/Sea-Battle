@@ -1,8 +1,7 @@
 package org.team.seabattle.server.service.validation;
 
-import jakarta.validation.ConstraintViolationException;
 import org.junit.jupiter.api.Test;
-import org.team.seabattle.server.persist.entity.Image;
+import org.team.seabattle.server.entity.Image;
 import org.team.seabattle.server.service.ImageStorage;
 
 import static org.junit.jupiter.api.Assertions.*;
