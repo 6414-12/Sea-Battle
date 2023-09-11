@@ -50,7 +50,7 @@ public class AuthController {
       .body(Map.of("accessToken", accessToken.getBody()));
   }
 
-  @PostMapping("/api/v1/register-login")
+  @PostMapping("/api/v1/weakpoint/register-login")
   public ResponseEntity<?> registerAndLogin(@RequestBody RegisterDto registerDto) {
     register(registerDto);
     return login(
