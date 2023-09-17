@@ -1,0 +1,66 @@
+REST:
+(Anonymous) Регистрация: /api/v1/register (POST)
+    Request: body: JSON{
+        <String>"name":"",
+        <String>"password":"",
+        <String>"avatar":""
+    }
+    Response: 201, body: {
+        <String>"accessToken":""
+    }
+    Possible errors: 400
+
+(Anonymous) Логин: /api/v1/login (POST)
+    Request: body: JSON{
+        <String>"name":"",
+        <String>"password":""
+    }
+    Response: 200, body: {
+        <String>"accessToken":""
+    }
+    Possible errors: 400
+
+(Anonymous) Выход: /api/v1/logout (POST)
+    Request: body: JSON{
+        <String>"accessToken":""
+    }
+    Response: 200, body empty
+    Possible errors: 400, 403
+
+(Anonymous) Рейтинг: /api/v1/rating (GET)
+    Request: body: empty
+    Response: 200, body: JSON[
+        ...,
+        {
+            <Long>"rankingPlace":"",
+            <Double>"winRate":"",
+            <Double>"accuracy":""
+        },
+        ...
+    ]
+    Possible errors: 400
+
+(User) Создать комнату: /api/v1/rooms (POST)
+    Request: header: accessToken, body: JSON{
+        <String>"name":""
+    }
+    Response: 201, body: JSON{
+        <Long>"roomId":""
+    }
+    Possible errors: 400, 403
+
+(User) Поиск комнаты: /api/v1/rooms/find/{username} (GET)
+    Request: header: accessToken, body: empty
+    Response: 200, body: JSON{
+        <Long>"id":""
+    }
+    Possible errors: 403
+
+(User) WebSocket:
+Войти в комнату: /api/v1/game/rooms/{room-id}/connect/{accessToken}
+Possible errors: wrong_incoming_data - Неправильные входящие данные
+
+Паттерн ответа ошибки:
+JSON{
+  "message": "Error message"
+}
