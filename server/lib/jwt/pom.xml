@@ -38,12 +38,12 @@
       <version>0.11.5</version>
     </dependency>
     <dependency>
-      <groupId>com.finance</groupId>
+      <groupId>org.team</groupId>
       <artifactId>logger</artifactId>
       <version>1.0-SNAPSHOT</version>
     </dependency>
     <dependency>
-      <groupId>com.finance</groupId>
+      <groupId>org.team</groupId>
       <artifactId>exception</artifactId>
       <version>1.0-SNAPSHOT</version>
     </dependency>

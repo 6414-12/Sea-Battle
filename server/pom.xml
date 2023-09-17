@@ -10,6 +10,8 @@
     <modules>
         <module>seabattle-server</module>
         <module>lib/jwt</module>
+        <module>lib/exception</module>
+        <module>lib/logger</module>
     </modules>
 
     <properties>
